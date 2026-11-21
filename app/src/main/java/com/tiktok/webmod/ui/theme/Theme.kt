@@ -1,0 +1,57 @@
+package com.tiktok.webmod.ui.theme
+
+import android.app.Activity
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.WindowCompat
+
+private val DarkColorScheme = darkColorScheme(
+    primary = TikTokRed,
+    secondary = TikTokCyan,
+    tertiary = TikTokWhite,
+    background = TikTokBlack,
+    surface = TikTokDarkGray,
+    onPrimary = TikTokWhite,
+    onSecondary = TikTokBlack,
+    onBackground = TikTokWhite,
+    onSurface = TikTokWhite,
+    surfaceVariant = TikTokCardBg,
+    onSurfaceVariant = TikTokGray
+)
+
+@Composable
+fun TikTokWebModTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
+    val colorScheme = DarkColorScheme
+    val view = LocalViewContextHelper()
+
+    MaterialTheme(
+        colorScheme = colorScheme,
+        typography = Typography,
+        content = content
+    )
+}
+
+@Composable
+private fun LocalViewContextHelper(): Boolean {
+    val view = LocalView.current
+    if (!view.isInEditMode) {
+        SideEffect {
+            val window = (view.context as? Activity)?.window
+            if (window != null) {
+                window.statusBarColor = TikTokBlack.toArgb()
+                window.navigationBarColor = TikTokBlack.toArgb()
+                WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = false
+                WindowCompat.getInsetsController(window, view).isAppearanceLightNavigationBars = false
+            }
+        }
+    }
+    return true
+}
