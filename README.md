@@ -49,7 +49,7 @@
 
 ## 📱 Установка
 
-1. Перейдите в раздел [Releases](https://github.com/daily878/kotost-mod/releases) (или скачайте готовый `Kotost_Mod_Mango.apk`).
+1. Перейдите в раздел [Releases](https://github.com/danilulwownw666-blip/kotost-mod/releases) (или скачайте готовый `Kotost_Mod_Mango.apk`).
 2. Установите `.apk` на свой смартфон (разрешите установку из неизвестных источников при запросе).
 3. Запустите **Kotost Mod**:
    * Выберите готовый сервер в блоке **«🥭 Mango Готовые Сервера»** либо вставьте свою ссылку (VLESS, Trojan, SS, SOCKS5).
